@@ -1,15 +1,20 @@
 from pygame import*
-from pygame.examples.audiocapture import sounds
+from pygame.examples.music_drop_fade import volume
 
+from sounds import load_sounds
+from slider import Slider
 from settings import Win_Width, Win_Height, White, Keys
 from keys import create_key_rects, draw_keys
 
 init()
 keys_list = list(Keys.keys())
 pressed = set()
-key_rects = create_key_rects()
+key_rects = create_key_rects(7)
 window = display.set_mode((Win_Width, Win_Height))
 running = True
+volume_slider = Slider(20, 20, 200, 0, 100, 1)
+sounds = load_sounds(Keys)
+
 while running:
     for e in event.get():
         if e.type == QUIT:

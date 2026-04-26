@@ -2,6 +2,8 @@ from pygame import mixer
 
 mixer.init()
 
+
+
 def load_sounds(keys):
     sounds = {}
     for key, filename in keys.items():
