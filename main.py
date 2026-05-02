@@ -1,5 +1,6 @@
 from pygame import*
 from pygame.examples.music_drop_fade import volume
+from settingMenu import SettingsMenu
 
 from sounds import load_sounds
 from slider import Slider
@@ -14,6 +15,15 @@ window = display.set_mode((Win_Width, Win_Height))
 running = True
 volume_slider = Slider(20, 20, 200, 0, 100, 1)
 sounds = load_sounds(Keys)
+settings_menu = SettingsMenu(
+    window.get_rect(),
+    initial_volume=current_volume,
+    initial_keys=num_keys,
+    min_keys=1,
+    max_keys=len(KEYS),
+    on_change=apply_settings,
+    on_back=lambda: _back_to_main(),
+)
 
 while running:
     for e in event.get():
@@ -21,6 +31,14 @@ while running:
             running = False
     window.fill(White)
     draw_keys(window, key_rects, pressed)
+    Button(
+    60, 20, 50, 50,
+    "",
+    open_settings,
+    img_idle=SETTINGS_IDLE,
+    img_hover=SETTINGS_HOVER
+    )
+
     display.update()
 
     if e.type == KEYDOWN:
