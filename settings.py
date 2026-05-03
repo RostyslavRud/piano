@@ -1,3 +1,4 @@
+
 Win_Width = 800
 Win_Height = 400
 White = (255, 255, 255)
@@ -12,4 +13,5 @@ Keys = {
     "g" : "g6.mp3",
     "e" : "e6.mp3",
     "c" : "c6.mp3",
+
 }
